@@ -5,8 +5,9 @@ class SingIn extends React.Component {
         error: null,
         isLoaded: false,
         users: [],
+        messaege: [],
         invalidUser: false,
-        invalidEmail: false
+        invalidValidation: false,
     };
     componentDidMount() {
         fetch("data/users.json")
@@ -27,10 +28,13 @@ class SingIn extends React.Component {
                 }
             )
     }
-    handleSubmit = (e) => {
-        e.preventDefault()
-        const userIndex = this.state.users.findIndex(user => user.name === this.state.name)
-        const emailIndex = this.state.users.findIndex(user => user.email === this.state.email)
+    userValidation = () => {
+        const users = [...this.state.users]
+        const userIndex = users.findIndex(user => user.name === this.state.name)
+        if (this.state.name === '') {
+
+        }
+
         if (userIndex === -1) {
             this.setState({
                 invalidUser: true
@@ -39,16 +43,12 @@ class SingIn extends React.Component {
             this.setState({
                 invalidUser: false
             })
+            const user = users[userIndex]
         }
-        if (emailIndex === -1) {
-            this.setState({
-                invalidEmail: true
-            })
-        } else {
-            this.setState({
-                invalidEmail: false
-            })
-        }
+    }
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const userIndex = this.userValidation()
     }
     handleChange = (e) => {
         const name = e.target.name
@@ -68,7 +68,7 @@ class SingIn extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <input name="name" type="text" placeholder="Name" onChange={this.handleChange} />
                     {this.state.invalidUser ? <p>Nie ma takiego użytkownika</p> : null}
-                    <input name="eamil" type="email" placeholder="Email" onChange={this.handleChange} />
+                    <input name="password" type="password" placeholder="Password" onChange={this.handleChange} />
                     {this.state.invalidEmail ? <p>Nie ma takiego maila</p> : null}
                     <button>Sign In</button>
                 </form>

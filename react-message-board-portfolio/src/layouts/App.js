@@ -4,23 +4,48 @@ import Nav from './Nav'
 import Main from './Main'
 import Footer from './Footer'
 
+
 class App extends React.Component {
   state = {
-    loggedUserId: null
-  }
+    error: null,
+    isLoaded: false,
+    data: []
+  };
+
   componentDidMount() {
-    const loggedUserId = localStorage.getItem("loggedUserId")
-    this.setState({
-      loggedUserId
-    })
+    if (localStorage.getItem("data") === null) {
+      fetch("data/data.json")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            localStorage.setItem('data', JSON.stringify(result));
+            this.setState({
+              isLoaded: true,
+              data: result
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
+    } else {
+      this.setState({
+        isLoaded: true,
+        data: JSON.parse(localStorage.getItem("data"))
+      })
+    }
   }
+
   render() {
-    console.log(this.state.loggedUserId)
+    const { error, isLoaded, data } = this.state;
     return (
       <>
         <Header />
         <Nav />
-        <Main />
+        <Main error={error} isLoaded={isLoaded} data={data} />
         <Footer />
       </>
     )

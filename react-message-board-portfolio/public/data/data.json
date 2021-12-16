@@ -1,0 +1,20 @@
+{
+    "counter": {
+        "userId": 2,
+        "postId": 5,
+        "threadId": 2
+    },
+    "users": [{
+            "userId": 1,
+            "name": "Wookie",
+            "email": "test@test.pl"
+        },
+        {
+            "userId": 2,
+            "name": "Monika",
+            "email": "monika@monika.pl"
+        }
+    ],
+    "threads": [],
+    "posts": []
+}
