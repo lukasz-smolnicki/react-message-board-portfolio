@@ -1,3 +1,12 @@
+import React from 'react'
+import {
+    Routes,
+    Route
+} from "react-router-dom";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
+import Board from "../pages/Board";
+
 const Main = (props) => {
     const { error, isLoaded, data } = props
     if (error) {
@@ -7,7 +16,11 @@ const Main = (props) => {
     } else {
         console.log(data.counter.userId)
         return (
-            <p> ok</p >
+            <Routes>
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route exact path="/" element={<Board />} />
+            </Routes>
         )
     }
 }
