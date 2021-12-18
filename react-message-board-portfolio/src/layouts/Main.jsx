@@ -5,22 +5,23 @@ import {
 } from "react-router-dom";
 import SignIn from "../pages/SignIn.jsx";
 import SignUp from "../pages/SignUp.jsx";
-import Board from "../pages/Board.jsx";
+import Titles from "../pages/Titles";
 
 const Main = (props) => {
     const { error, isLoaded, data } = props
     if (error) {
         return <p>ERROR: Something's going wrong</p>
     } else if (!isLoaded) {
-        return <p>loading</p>
+        return <p>Loading...</p>
     } else {
-        console.log(data.counter.userId)
         return (
-            <Routes>
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route exact path="/" element={<Board />} />
-            </Routes>
+            <main>
+                <Routes>
+                    <Route path="/" element={<Titles data={data} />} />
+                    <Route path="/signin" element={<SignIn />} />
+                    <Route path="/signup" element={<SignUp />} />
+                </Routes>
+            </main>
         )
     }
 }

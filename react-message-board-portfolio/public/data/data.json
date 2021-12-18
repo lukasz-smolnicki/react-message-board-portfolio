@@ -15,7 +15,7 @@
             "email": "monika@monika.pl"
         }
     ],
-    "titels": [{
+    "titles": [{
         "id": 1,
         "userId": 1,
         "body": "titel test1",

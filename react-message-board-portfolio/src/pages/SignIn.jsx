@@ -1,5 +1,9 @@
-function SignIn() {
-    return (<>SignIn</>);
+import React from 'react'
+
+const SignIn = (props) => {
+    return (
+        <ul></ul>
+    )
 }
 
 export default SignIn;

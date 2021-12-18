@@ -1,7 +1,9 @@
-function Footer() {
+import React from 'react'
+
+const Header = (props) => {
     return (
-        <>Footer</>
-    );
+        <footer>Footer</footer>
+    )
 }
 
-export default Footer;
+export default Header;
