@@ -3,9 +3,9 @@ import {
     Routes,
     Route
 } from "react-router-dom";
-import SignIn from "../pages/SignIn";
-import SignUp from "../pages/SignUp";
-import Board from "../pages/Board";
+import SignIn from "../pages/SignIn.jsx";
+import SignUp from "../pages/SignUp.jsx";
+import Board from "../pages/Board.jsx";
 
 const Main = (props) => {
     const { error, isLoaded, data } = props

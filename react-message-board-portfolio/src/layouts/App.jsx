@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './Header'
-import Nav from './Nav'
-import Main from './Main'
-import Footer from './Footer'
+import Header from './Header.jsx'
+import Nav from './Nav.jsx'
+import Main from './Main.jsx'
+import Footer from './Footer.jsx'
 
 
 class App extends React.Component {
