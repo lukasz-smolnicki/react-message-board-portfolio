@@ -1,14 +1,16 @@
 import React from 'react'
 import Title from '../components/Title.jsx'
 
-const Board = (props) => {
+const Titles = (props) => {
     const { data } = props
-    const titles = data.titles.map(title => <Title key={title.id} title={title} />)
+    const title = data.titles.map(title => <Title key={title.id} title={title} />)
     return (
-        <ul>
-            {titles}
-        </ul>
+        <section>
+            <ul>
+                {title}
+            </ul>
+        </section>
     )
 }
 
-export default Board;
+export default Titles;

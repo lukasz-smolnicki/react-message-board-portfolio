@@ -6,6 +6,7 @@ import {
 import SignIn from "../pages/SignIn.jsx";
 import SignUp from "../pages/SignUp.jsx";
 import Titles from "../pages/Titles";
+import Error from "../pages/Error";
 
 const Main = (props) => {
     const { error, isLoaded, data } = props
@@ -17,6 +18,7 @@ const Main = (props) => {
         return (
             <main>
                 <Routes>
+                    <Route path="*" element={<Error />} />
                     <Route path="/" element={<Titles data={data} />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />

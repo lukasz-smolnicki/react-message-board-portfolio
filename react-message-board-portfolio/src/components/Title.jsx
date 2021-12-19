@@ -1,10 +1,12 @@
 import React from 'react'
 
 const Title = (props) => {
-    console.log(props.title)
+    console.log(props)
     const { body, date } = props.title
     return (
-        <li>{body} {date}</li>
+        <article>
+            <li>{body} {date}</li>
+        </article>
     )
 }
 
