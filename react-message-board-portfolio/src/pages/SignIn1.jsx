@@ -8,23 +8,23 @@ class SingIn extends React.Component {
         messaege: [],
         invalidUser: false,
         invalidValidation: false,
-    };
+    }
     componentDidMount() {
-        fetch("data/users.json")
+        fetch('data/users.json')
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({
                         isLoaded: true,
                         users: result
-                    });
-                    localStorage.setItem('users', JSON.stringify(result));
+                    })
+                    localStorage.setItem('users', JSON.stringify(result))
                 },
                 (error) => {
                     this.setState({
                         isLoaded: true,
                         error
-                    });
+                    })
                 }
             )
     }
@@ -58,23 +58,23 @@ class SingIn extends React.Component {
         })
     }
     render() {
-        const { error, isLoaded } = this.state;
+        const { error, isLoaded } = this.state
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return <div>Error: {error.message}</div>
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div>Loading...</div>
         } else {
             return (
                 <form onSubmit={this.handleSubmit}>
-                    <input name="name" type="text" placeholder="Name" onChange={this.handleChange} />
+                    <input name='name' type='text' placeholder='Name' onChange={this.handleChange} />
                     {this.state.invalidUser ? <p>Nie ma takiego użytkownika</p> : null}
-                    <input name="password" type="password" placeholder="Password" onChange={this.handleChange} />
+                    <input name='password' type='password' placeholder='Password' onChange={this.handleChange} />
                     {this.state.invalidEmail ? <p>Nie ma takiego maila</p> : null}
                     <button>Sign In</button>
                 </form>
-            );
+            )
         }
     }
 }
 
-export default SingIn;
+export default SingIn

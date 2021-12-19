@@ -6,4 +6,4 @@ const SignUp = (props) => {
     )
 }
 
-export default SignUp;
+export default SignUp

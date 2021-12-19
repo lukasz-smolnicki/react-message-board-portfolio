@@ -2,11 +2,12 @@ import React from 'react'
 import {
     Routes,
     Route
-} from "react-router-dom";
-import SignIn from "../pages/SignIn.jsx";
-import SignUp from "../pages/SignUp.jsx";
-import Titles from "../pages/Titles";
-import Error from "../pages/Error";
+} from 'react-router-dom'
+import SignIn from '../pages/SignIn.jsx'
+import SignUp from '../pages/SignUp.jsx'
+import Board from '../pages/Board.jsx'
+import Error from '../pages/Error.jsx'
+import Title from '../components/Title.jsx'
 
 const Main = (props) => {
     const { error, isLoaded, data } = props
@@ -18,14 +19,15 @@ const Main = (props) => {
         return (
             <main>
                 <Routes>
-                    <Route path="*" element={<Error />} />
-                    <Route path="/" element={<Titles data={data} />} />
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/signup" element={<SignUp />} />
+                    <Route path='*' element={<Error />} />
+                    <Route path='' element={<Board data={data} />} />
+                    <Route path='title/:id' element={<Title data={data} />} />
+                    <Route path='signin' element={<SignIn />} />
+                    <Route path='signup' element={<SignUp />} />
                 </Routes>
             </main>
         )
     }
 }
 
-export default Main;
+export default Main

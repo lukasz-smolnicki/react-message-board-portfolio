@@ -1,13 +1,15 @@
 import React from 'react'
+import Post from './Post.jsx'
+import { useParams } from "react-router-dom";
 
 const Title = (props) => {
-    console.log(props)
-    const { body, date } = props.title
+    const { data } = props
+    let params = useParams();
+    const posts = data.posts.filter(post => post.titleId === parseInt(params.id))
+    const postsList = posts.map(post => <Post key={post.id} post={post} />)
     return (
-        <article>
-            <li>{body} {date}</li>
-        </article>
+        <section>{postsList}</section>
     )
 }
 
-export default Title;
+export default Title

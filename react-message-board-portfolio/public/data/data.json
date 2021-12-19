@@ -18,12 +18,12 @@
     "titles": [{
         "id": 1,
         "userId": 1,
-        "body": "titel test1",
+        "body": "Title 1",
         "date": "2021-12-18 10:50"
     }, {
         "id": 2,
         "userId": 2,
-        "body": "titel test2",
+        "body": "Title 2",
         "date": "2021-12-18 10:50"
     }],
     "posts": [{
