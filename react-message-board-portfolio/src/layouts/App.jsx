@@ -12,12 +12,36 @@ class App extends React.Component {
     data: [],
     name: '',
     password: '',
+    email: '',
     loggedUserId: null,
   }
-
-  handleSubmit = (e) => {
-    e.preventDefault()
+  resetFormInputs = () => {
+    this.setState({
+      name: '',
+      password: '',
+      email: ''
+    })
   }
+
+  handleSubmitSignIn = (e) => {
+    e.preventDefault()
+    const users = [...this.state.data.users]
+    const user = users.find(user => user.name === this.state.name)
+    if (this.state.name === '' || this.state.password === '') {
+      this.resetFormInputs()
+      alert('Enter login and password')
+    } else if (user === undefined) {
+      alert('There is no user with that name')
+    } else if (user.password !== this.state.password) {
+      alert('Wrong password')
+    } else {
+      this.setState({
+        loggedUserId: user.id
+      })
+      localStorage.setItem('user', `${user.id}`)
+    }
+  }
+
   handleChange = (e) => {
     const name = e.target.name
     const value = e.target.value
@@ -26,27 +50,10 @@ class App extends React.Component {
     })
   }
 
-  // handleLogin = () => {
-  //   const users = [...this.state.users]
-  //   const userIndex = users.findIndex(user => user.name === this.state.name)
-  //   if (this.state.name === '') {
-
-  //   }
-
-  //   if (userIndex === -1) {
-  //     this.setState({
-  //       invalidUser: true
-  //     })
-  //   } else {
-  //     this.setState({
-  //       invalidUser: false
-  //     })
-  //     const user = users[userIndex]
-  //   }
-  // }
-
   componentDidMount() {
-    if (localStorage.getItem('data') === null) {
+    const userStorage = localStorage.getItem('user')
+    const dataStorage = localStorage.getItem('data')
+    if (dataStorage === null) {
       fetch('data/data.json')
         .then(res => res.json())
         .then(
@@ -70,6 +77,11 @@ class App extends React.Component {
         data: JSON.parse(localStorage.getItem('data'))
       })
     }
+    if (userStorage !== null) {
+      this.setState({
+        loggedUserId: userStorage
+      })
+    }
   }
 
   render() {
@@ -82,8 +94,11 @@ class App extends React.Component {
           error={error}
           isLoaded={isLoaded}
           data={data}
+          name={this.state.name}
+          password={this.state.password}
+          email={this.state.email}
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          handleSubmit={this.handleSubmitSignIn}
         />
         <Footer />
       </>

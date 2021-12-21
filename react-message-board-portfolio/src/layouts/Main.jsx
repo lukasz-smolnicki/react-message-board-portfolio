@@ -10,7 +10,7 @@ import Error from '../pages/Error.jsx'
 import Title from '../components/Title.jsx'
 
 const Main = (props) => {
-    const { error, isLoaded, data, handleSubmit, handleChange } = props
+    const { name, password, email, error, isLoaded, data, handleSubmit, handleChange } = props
     if (error) {
         return <p>ERROR: Something's going wrong</p>
     } else if (!isLoaded) {
@@ -25,6 +25,8 @@ const Main = (props) => {
                     <Route path='signup' element={<SignUp />} />
                     <Route path='signin' element={
                         <SignIn
+                            name={name}
+                            password={password}
                             handleChange={handleChange}
                             handleSubmit={handleSubmit}
                         />}
