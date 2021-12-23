@@ -16,6 +16,7 @@ const Nav = (props) => {
     } else {
         const users = props.state.data.users
         const user = users.find(user => user.id === loggedUserId)
+
         return (
             <nav>
                 <NavLink to='/'>Board</NavLink>

@@ -14,6 +14,7 @@ class App extends React.Component {
     password: '',
     email: '',
     loggedUserId: null,
+    user: [],
   }
 
   resetFormInputs = () => {
@@ -25,6 +26,7 @@ class App extends React.Component {
   }
 
   handleSignOut = () => {
+    localStorage.removeItem('loggedUserId')
     this.setState({
       loggedUserId: null
     })
@@ -44,7 +46,7 @@ class App extends React.Component {
       this.setState({
         loggedUserId: user.id
       })
-      localStorage.setItem('user', `${user.id}`)
+      localStorage.setItem('loggedUserId', `${user.id}`)
     }
   }
 
@@ -57,7 +59,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const userStorage = localStorage.getItem('user')
+    const userStorage = localStorage.getItem('loggedUserId')
     const dataStorage = localStorage.getItem('data')
     if (dataStorage === null) {
       fetch('data/data.json')
@@ -85,26 +87,33 @@ class App extends React.Component {
     }
     if (userStorage !== null) {
       this.setState({
-        loggedUserId: userStorage
+        loggedUserId: parseInt(userStorage)
       })
     }
   }
 
   render() {
-    return (
-      <>
-        <Header />
-        <Nav
-          state={this.state}
-          handleSignOut={this.handleSignOut} />
-        <Main
-          state={this.state}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmitSignIn}
-        />
-        <Footer />
-      </>
-    )
+    const { error, isLoaded } = this.state
+    if (error) {
+      return <p>ERROR: Something's going wrong</p>
+    } else if (!isLoaded) {
+      return <p>Loading...</p>
+    } else {
+      return (
+        <>
+          <Header />
+          <Nav
+            state={this.state}
+            handleSignOut={this.handleSignOut} />
+          <Main
+            state={this.state}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmitSignIn}
+          />
+          <Footer />
+        </>
+      )
+    }
   }
 }
 
