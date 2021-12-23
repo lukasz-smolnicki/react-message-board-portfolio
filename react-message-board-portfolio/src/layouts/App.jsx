@@ -15,6 +15,7 @@ class App extends React.Component {
     email: '',
     loggedUserId: null,
   }
+
   resetFormInputs = () => {
     this.setState({
       name: '',
@@ -23,12 +24,17 @@ class App extends React.Component {
     })
   }
 
+  handleSignOut = () => {
+    this.setState({
+      loggedUserId: null
+    })
+  }
+
   handleSubmitSignIn = (e) => {
     e.preventDefault()
     const users = [...this.state.data.users]
     const user = users.find(user => user.name === this.state.name)
     if (this.state.name === '' || this.state.password === '') {
-      this.resetFormInputs()
       alert('Enter login and password')
     } else if (user === undefined) {
       alert('There is no user with that name')
@@ -85,18 +91,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, data } = this.state
     return (
       <>
         <Header />
-        <Nav />
+        <Nav
+          state={this.state}
+          handleSignOut={this.handleSignOut} />
         <Main
-          error={error}
-          isLoaded={isLoaded}
-          data={data}
-          name={this.state.name}
-          password={this.state.password}
-          email={this.state.email}
+          state={this.state}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmitSignIn}
         />

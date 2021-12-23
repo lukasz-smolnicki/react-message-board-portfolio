@@ -1,7 +1,8 @@
 import React from 'react'
 
 const SignIn = (props) => {
-    const { name, password, handleSubmit, handleChange } = props
+    const { handleSubmit, handleChange } = props
+    const { name, password } = props.state
     return (
         <section>
             <form onSubmit={handleSubmit}>

@@ -10,7 +10,8 @@ import Error from '../pages/Error.jsx'
 import Title from '../components/Title.jsx'
 
 const Main = (props) => {
-    const { name, password, email, error, isLoaded, data, handleSubmit, handleChange } = props
+    const { state, handleSubmit, handleChange } = props
+    const { error, isLoaded } = props.state
     if (error) {
         return <p>ERROR: Something's going wrong</p>
     } else if (!isLoaded) {
@@ -20,13 +21,12 @@ const Main = (props) => {
             <main>
                 <Routes>
                     <Route path='*' element={<Error />} />
-                    <Route path='' element={<Board data={data} />} />
-                    <Route path='title/:id' element={<Title data={data} />} />
+                    <Route path='' element={<Board state={state} />} />
+                    <Route path='title/:id' element={<Title state={state} />} />
                     <Route path='signup' element={<SignUp />} />
                     <Route path='signin' element={
                         <SignIn
-                            name={name}
-                            password={password}
+                            state={state}
                             handleChange={handleChange}
                             handleSubmit={handleSubmit}
                         />}
