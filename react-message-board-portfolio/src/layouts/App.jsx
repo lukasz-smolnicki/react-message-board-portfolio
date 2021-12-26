@@ -13,8 +13,7 @@ class App extends React.Component {
     name: '',
     password: '',
     email: '',
-    loggedUserId: null,
-    user: [],
+    loggedUserId: false,
   }
 
   resetFormInputs = () => {
@@ -28,7 +27,7 @@ class App extends React.Component {
   handleSignOut = () => {
     localStorage.removeItem('loggedUserId')
     this.setState({
-      loggedUserId: null
+      loggedUserId: false
     })
   }
 
@@ -48,6 +47,7 @@ class App extends React.Component {
       })
       localStorage.setItem('loggedUserId', `${user.id}`)
     }
+
   }
 
   handleChange = (e) => {

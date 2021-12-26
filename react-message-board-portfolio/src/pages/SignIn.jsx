@@ -3,6 +3,7 @@ import React from 'react'
 const SignIn = (props) => {
     const { handleSubmit, handleChange } = props
     const { name, password } = props.state
+
     return (
         <section>
             <form onSubmit={handleSubmit}>

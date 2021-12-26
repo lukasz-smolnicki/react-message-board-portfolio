@@ -5,7 +5,7 @@ const Nav = (props) => {
     const { handleSignOut } = props
     const { loggedUserId } = props.state
 
-    if (loggedUserId === null) {
+    if (loggedUserId === false) {
         return (
             <nav>
                 <NavLink to='/'>Board</NavLink>
