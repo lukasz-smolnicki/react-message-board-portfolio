@@ -31,7 +31,7 @@ class App extends React.Component {
     })
   }
 
-  handleSubmitSignIn = (e) => {
+  handleSignIn = (e) => {
     e.preventDefault()
     const users = [...this.state.data.users]
     const user = users.find(user => user.name === this.state.name)
@@ -47,7 +47,33 @@ class App extends React.Component {
       })
       localStorage.setItem('loggedUserId', `${user.id}`)
     }
+  }
 
+  handleSignUp = (e) => {
+    e.preventDefault()
+    const data = this.state.data
+    const newUser = {
+      id: ++data.counter.userId,
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    }
+    data.users.push(newUser)
+    console.log(data)
+
+    // const user = users.find(user => user.name === this.state.name)
+    // if (this.state.name === '' || this.state.password === '') {
+    //   alert('Enter login and password')
+    // } else if (user === undefined) {
+    //   alert('There is no user with that name')
+    // } else if (user.password !== this.state.password) {
+    //   alert('Wrong password')
+    // } else {
+    //   this.setState({
+    //     loggedUserId: user.id
+    //   })
+    //   localStorage.setItem('loggedUserId', `${user.id}`)
+    // }
   }
 
   handleChange = (e) => {
@@ -62,7 +88,7 @@ class App extends React.Component {
     const userStorage = localStorage.getItem('loggedUserId')
     const dataStorage = localStorage.getItem('data')
     if (dataStorage === null) {
-      fetch('data/data.json')
+      fetch('data/dummyData.json')
         .then(res => res.json())
         .then(
           (result) => {
@@ -108,7 +134,8 @@ class App extends React.Component {
           <Main
             state={this.state}
             handleChange={this.handleChange}
-            handleSubmit={this.handleSubmitSignIn}
+            handleSignIn={this.handleSignIn}
+            handleSignUp={this.handleSignUp}
           />
           <Footer />
         </>

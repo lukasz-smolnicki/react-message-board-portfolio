@@ -1,10 +1,16 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-const ProtectedRoutes = (props) => {
+const ProtectedLogin = (props) => {
     const { loggedUserId } = props.state
 
-    return loggedUserId ? <Navigate to='/' /> : <Outlet />
+    return loggedUserId ? <Navigate to={`/profile/${loggedUserId}`} /> : <Outlet />
 }
 
-export default ProtectedRoutes
+const ProtectedProfile = (props) => {
+    const { loggedUserId } = props.state
+
+    return loggedUserId ? <Outlet /> : <Navigate to='/signin' />
+}
+
+export { ProtectedLogin, ProtectedProfile }

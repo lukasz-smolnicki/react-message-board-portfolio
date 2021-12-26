@@ -9,23 +9,28 @@ import Board from '../pages/Board.jsx'
 import Error from '../pages/Error.jsx'
 import Title from '../components/Title.jsx'
 import Profile from '../pages/Profile.jsx'
-import ProtectedRoutes from '../pages/ProtectetRoutes.jsx'
+import { ProtectedLogin, ProtectedProfile } from '../pages/ProtectetRoutes.jsx'
 
 const Main = (props) => {
-    const { state, handleSubmit, handleChange } = props
+    const { state, handleSignUp, handleSignIn, handleChange } = props
     return (
         <main>
             <Routes>
                 <Route path='' element={<Board state={state} />} />
                 <Route path='title/:id' element={<Title state={state} />} />
-                <Route path='profile' element={<Profile />} />
-                <Route element={<ProtectedRoutes state={state} />}>
-                    <Route path='signup' element={<SignUp />} />
+                <Route element={<ProtectedProfile state={state} />}>
+                    <Route path='profile/:id' element={<Profile />} />
+                </Route>
+                <Route element={<ProtectedLogin state={state} />}>
+                    <Route path='signup' element={<SignUp
+                        state={state}
+                        handleChange={handleChange}
+                        handleSubmit={handleSignUp} />} />
                     <Route path='signin' element={
                         <SignIn
                             state={state}
                             handleChange={handleChange}
-                            handleSubmit={handleSubmit}
+                            handleSubmit={handleSignIn}
                         />}
                     />
                 </Route>

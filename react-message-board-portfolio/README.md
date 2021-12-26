@@ -5,5 +5,5 @@ javascript
 html
 css
 json
-router
+router v6 hooks navigate outlet
 local storage save data
