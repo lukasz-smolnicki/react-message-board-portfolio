@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-
+//protect when user try to enter wrong name in link
 const ProtectedLogin = (props) => {
     const { loggedUserId } = props.state
 

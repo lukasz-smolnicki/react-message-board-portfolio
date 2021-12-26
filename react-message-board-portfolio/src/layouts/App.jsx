@@ -4,7 +4,6 @@ import Nav from './Nav.jsx'
 import Main from './Main.jsx'
 import Footer from './Footer.jsx'
 
-
 class App extends React.Component {
   state = {
     error: null,
@@ -52,28 +51,28 @@ class App extends React.Component {
   handleSignUp = (e) => {
     e.preventDefault()
     const data = this.state.data
-    const newUser = {
-      id: ++data.counter.userId,
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
+    const user = data.users.find(user => user.name === this.state.name)
+    const email = data.users.find(user => user.email === this.state.email)
+    console.log(user, email)
+    if (this.state.name === '' || this.state.email === '' || this.state.password === '') {
+      alert('Enter login, email and password')
+    } else if (user !== undefined || email !== undefined) {
+      alert('Nick or email already exists')
+    } else {
+      const newUser = {
+        id: ++data.counter.userId,
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      }
+      data.users.push(newUser)
+      this.setState({
+        data,
+        loggedUserId: data.counter.userId
+      })
+      localStorage.setItem('data', JSON.stringify(this.state.data))
+      localStorage.setItem('loggedUserId', data.counter.userId)
     }
-    data.users.push(newUser)
-    console.log(data)
-
-    // const user = users.find(user => user.name === this.state.name)
-    // if (this.state.name === '' || this.state.password === '') {
-    //   alert('Enter login and password')
-    // } else if (user === undefined) {
-    //   alert('There is no user with that name')
-    // } else if (user.password !== this.state.password) {
-    //   alert('Wrong password')
-    // } else {
-    //   this.setState({
-    //     loggedUserId: user.id
-    //   })
-    //   localStorage.setItem('loggedUserId', `${user.id}`)
-    // }
   }
 
   handleChange = (e) => {
