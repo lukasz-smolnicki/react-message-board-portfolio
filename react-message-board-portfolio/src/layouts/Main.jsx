@@ -9,7 +9,7 @@ import Board from '../pages/Board.jsx'
 import Error from '../pages/Error.jsx'
 import Title from '../components/Title.jsx'
 import Profile from '../pages/Profile.jsx'
-import ProtectetRoutes from '../pages/ProtectetRoutes.jsx'
+import ProtectedRoutes from '../pages/ProtectetRoutes.jsx'
 
 const Main = (props) => {
     const { state, handleSubmit, handleChange } = props
@@ -19,7 +19,7 @@ const Main = (props) => {
                 <Route path='' element={<Board state={state} />} />
                 <Route path='title/:id' element={<Title state={state} />} />
                 <Route path='profile' element={<Profile />} />
-                <Route element={<ProtectetRoutes state={state} />}>
+                <Route element={<ProtectedRoutes state={state} />}>
                     <Route path='signup' element={<SignUp />} />
                     <Route path='signin' element={
                         <SignIn
