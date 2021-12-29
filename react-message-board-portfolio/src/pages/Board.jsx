@@ -3,7 +3,7 @@ import Titles from '../components/Titles.jsx'
 
 const Board = (props) => {
     const { data } = props.state
-    const titles = data.titles.map(title => <Titles key={title.id} title={title} />)
+    const titles = data.titles.map(title => <Titles key={title.id} title={title} state={props.state} />)
     return (
         <section>
             <ul>

@@ -53,7 +53,6 @@ class App extends React.Component {
     const data = this.state.data
     const user = data.users.find(user => user.name === this.state.name)
     const email = data.users.find(user => user.email === this.state.email)
-    console.log(user, email)
     if (this.state.name === '' || this.state.email === '' || this.state.password === '') {
       alert('Enter login, email and password')
     } else if (user !== undefined || email !== undefined) {

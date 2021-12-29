@@ -20,6 +20,7 @@ const Main = (props) => {
                 <Route path='title/:id' element={<Title state={state} />} />
                 <Route element={<ProtectedProfile state={state} />}>
                     <Route path='profile/:id' element={<Profile />} />
+                    <Route path='profile' element={<Profile />} />
                 </Route>
                 <Route element={<ProtectedLogin state={state} />}>
                     <Route path='signup' element={<SignUp
