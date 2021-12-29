@@ -14,6 +14,8 @@ class App extends React.Component {
     email: '',
     loggedUserId: false,
     newTitleIsActive: false,
+    title: '',
+    post: ''
   }
 
   resetFormInputs = () => {
@@ -27,7 +29,8 @@ class App extends React.Component {
   handleSignOut = () => {
     localStorage.removeItem('loggedUserId')
     this.setState({
-      loggedUserId: false
+      loggedUserId: false,
+      newTitleIsActive: false,
     })
   }
 
@@ -97,6 +100,40 @@ class App extends React.Component {
     localStorage.setItem('data', JSON.stringify(data))
   }
 
+  handleAddTitle = (e) => {
+    e.preventDefault()
+    const data = JSON.parse(localStorage.getItem('data'))
+    const { loggedUserId } = this.state
+    const date = new Date()
+    const formatDate = `${date.getFullYear()}-10-10 10:52`
+    if (this.state.title === '' || this.state.post === '') {
+      alert('Enter title name and post description')
+    } else {
+      ++data.counter.titleId
+      ++data.counter.postId
+      const newTitle = {
+        id: data.counter.titleId,
+        userId: loggedUserId,
+        body: this.state.title,
+        date: formatDate
+      }
+      const newPost = {
+        id: data.counter.postId,
+        userId: loggedUserId,
+        titleId: data.counter.titleId,
+        body: this.state.post,
+        date: formatDate
+      }
+      data.posts.push(newPost)
+      data.titles.push(newTitle)
+      this.setState({
+        newTitleIsActive: false,
+        data
+      })
+      localStorage.setItem('data', JSON.stringify(this.state.data))
+    }
+  }
+
   acitvieAddNewTitle = (value) => {
     this.setState({
       newTitleIsActive: value
@@ -138,6 +175,13 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(new Date().getFullYear())
+    console.log(new Date().getMonth())
+    console.log(new Date().getDate())
+    // console.log(new Date().getDay())
+    console.log(new Date().getHours())
+    console.log(new Date().getMinutes())
+
     const { error, isLoaded } = this.state
     if (error) {
       return <p>ERROR: Something's going wrong</p>
@@ -152,6 +196,7 @@ class App extends React.Component {
             handleSignOut={this.handleSignOut} />
           <Main
             state={this.state}
+            handleAddTitle={this.handleAddTitle}
             acitvieAddNewTitle={this.acitvieAddNewTitle}
             handleRemoveTitle={this.handleRemoveTitle}
             handleChange={this.handleChange}

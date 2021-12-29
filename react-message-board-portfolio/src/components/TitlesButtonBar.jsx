@@ -1,11 +1,12 @@
 import React from 'react'
+import Button from './Button.jsx'
 
 const TitlesButtonBar = (props) => {
     const { handleRemoveTitle } = props
     const id = props.title.id
     return (
         <>
-            <button onClick={() => handleRemoveTitle(id)}>Remove post</button>
+            <Button action={handleRemoveTitle} value={id} name='Delete title' />
         </>
     )
 }
