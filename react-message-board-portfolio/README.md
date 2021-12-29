@@ -7,3 +7,4 @@ css
 json
 router v6 hooks navigate outlet
 local storage save data
+redirect when not auth

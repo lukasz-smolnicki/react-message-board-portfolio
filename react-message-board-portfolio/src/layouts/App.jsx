@@ -13,6 +13,7 @@ class App extends React.Component {
     password: '',
     email: '',
     loggedUserId: false,
+    newTitleIsActive: false,
   }
 
   resetFormInputs = () => {
@@ -96,6 +97,12 @@ class App extends React.Component {
     localStorage.setItem('data', JSON.stringify(data))
   }
 
+  acitvieAddNewTitle = (value) => {
+    this.setState({
+      newTitleIsActive: value
+    })
+  }
+
   componentDidMount() {
     const userStorage = localStorage.getItem('loggedUserId')
     const dataStorage = localStorage.getItem('data')
@@ -145,6 +152,7 @@ class App extends React.Component {
             handleSignOut={this.handleSignOut} />
           <Main
             state={this.state}
+            acitvieAddNewTitle={this.acitvieAddNewTitle}
             handleRemoveTitle={this.handleRemoveTitle}
             handleChange={this.handleChange}
             handleSignIn={this.handleSignIn}
