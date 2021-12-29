@@ -20,6 +20,7 @@ const Nav = (props) => {
         return (
             <nav>
                 <NavLink to='/'>Board</NavLink>
+                <NavLink to='/profile'>Profile</NavLink>
                 <p>Witaj {user.name},</p>
                 <button onClick={() => handleSignOut()}>SignOut</button>
             </nav>

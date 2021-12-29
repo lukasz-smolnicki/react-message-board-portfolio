@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 const ProtectedLogin = (props) => {
     const { loggedUserId } = props.state
 
-    return loggedUserId ? <Navigate to={`/profile/${loggedUserId}`} /> : <Outlet />
+    return loggedUserId ? <Navigate to={`/`} /> : <Outlet />
 }
 
 const ProtectedProfile = (props) => {

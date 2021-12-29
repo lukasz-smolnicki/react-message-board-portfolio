@@ -2,7 +2,7 @@
     "counter": {
         "userId": 2,
         "postId": 5,
-        "threadId": 2
+        "titleId": 4
     },
     "users": [{
             "id": 1,
@@ -26,6 +26,16 @@
         "id": 2,
         "userId": 2,
         "body": "Title 2",
+        "date": "2021-12-18 10:50"
+    }, {
+        "id": 3,
+        "userId": 2,
+        "body": "Title 3",
+        "date": "2021-12-18 10:50"
+    }, {
+        "id": 4,
+        "userId": 2,
+        "body": "Title 4",
         "date": "2021-12-18 10:50"
     }],
     "posts": [{

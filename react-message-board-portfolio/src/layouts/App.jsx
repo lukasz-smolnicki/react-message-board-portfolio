@@ -82,6 +82,20 @@ class App extends React.Component {
     })
   }
 
+  handleRemoveTitle = (id) => {
+    const data = this.state.data
+    const titles = data.titles
+    const posts = data.posts
+    const filteredTitles = titles.filter(title => title.id !== id)
+    const filteredPosts = posts.filter(post => post.titleId !== id)
+    data.titles = [...filteredTitles]
+    data.posts = [...filteredPosts]
+    this.setState({
+      data
+    })
+    localStorage.setItem('data', JSON.stringify(data))
+  }
+
   componentDidMount() {
     const userStorage = localStorage.getItem('loggedUserId')
     const dataStorage = localStorage.getItem('data')
@@ -131,6 +145,7 @@ class App extends React.Component {
             handleSignOut={this.handleSignOut} />
           <Main
             state={this.state}
+            handleRemoveTitle={this.handleRemoveTitle}
             handleChange={this.handleChange}
             handleSignIn={this.handleSignIn}
             handleSignUp={this.handleSignUp}
