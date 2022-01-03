@@ -10,7 +10,7 @@ const Titles = (props) => {
     const user = users.find(user => title.userId === user.id)
     return (
         <li>
-            <NavLink to={`/title/${title.id}`}>{title.body}</NavLink>
+            <NavLink to={`/title/${title.id}`}>{title.name}</NavLink>
             <p>{title.date}</p>
             <p>{user.name}</p>
             {loggedUserId && loggedUserId === user.id ? <TitlesButtonBar title={title} handleRemoveTitle={handleRemoveTitle} /> : null}

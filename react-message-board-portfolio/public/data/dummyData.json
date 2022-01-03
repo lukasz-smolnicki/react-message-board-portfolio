@@ -20,22 +20,26 @@
     "titles": [{
         "id": 1,
         "userId": 1,
-        "body": "Title 1",
+        "name": "Test title 1",
+        "body": "Test body",
         "date": "2021-12-18 10:50"
     }, {
         "id": 2,
         "userId": 2,
-        "body": "Title 2",
+        "name": "Test title 2",
+        "body": "Test body 2",
         "date": "2021-12-18 10:50"
     }, {
         "id": 3,
         "userId": 2,
-        "body": "Title 3",
+        "name": "Test title 3",
+        "body": "Test body 3",
         "date": "2021-12-18 10:50"
     }, {
         "id": 4,
         "userId": 2,
-        "body": "Title 4",
+        "name": "Test title 4",
+        "body": "Test body 4",
         "date": "2021-12-18 10:50"
     }],
     "posts": [{

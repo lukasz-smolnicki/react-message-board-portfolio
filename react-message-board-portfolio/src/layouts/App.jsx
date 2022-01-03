@@ -87,13 +87,25 @@ class App extends React.Component {
   }
 
   handleRemoveTitle = (id) => {
-    const data = this.state.data
+    const data = JSON.parse(localStorage.getItem('data'))
     const titles = data.titles
     const posts = data.posts
     const filteredTitles = titles.filter(title => title.id !== id)
     const filteredPosts = posts.filter(post => post.titleId !== id)
     data.titles = [...filteredTitles]
     data.posts = [...filteredPosts]
+    this.setState({
+      data
+    })
+    localStorage.setItem('data', JSON.stringify(data))
+  }
+
+  handleRemovePost = (id) => {
+    const data = JSON.parse(localStorage.getItem('data'))
+    const posts = data.posts
+    const filteredPosts = posts.filter(post => post.id !== id)
+    data.posts = [...filteredPosts]
+    console.log(id)
     this.setState({
       data
     })
@@ -110,27 +122,19 @@ class App extends React.Component {
       alert('Enter title name and post description')
     } else {
       ++data.counter.titleId
-      ++data.counter.postId
       const newTitle = {
         id: data.counter.titleId,
         userId: loggedUserId,
-        body: this.state.title,
+        title: this.state.title,
+        body: this.state.body,
         date: formatDate
       }
-      const newPost = {
-        id: data.counter.postId,
-        userId: loggedUserId,
-        titleId: data.counter.titleId,
-        body: this.state.post,
-        date: formatDate
-      }
-      data.posts.push(newPost)
       data.titles.push(newTitle)
       this.setState({
         newTitleIsActive: false,
         data
       })
-      localStorage.setItem('data', JSON.stringify(this.state.data))
+      localStorage.setItem('data', JSON.stringify(data))
     }
   }
 
@@ -175,12 +179,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(new Date().getFullYear())
-    console.log(new Date().getMonth())
-    console.log(new Date().getDate())
-    // console.log(new Date().getDay())
-    console.log(new Date().getHours())
-    console.log(new Date().getMinutes())
+    // console.log(new Date().getFullYear())
+    // console.log(new Date().getMonth())
+    // console.log(new Date().getDate())
+    // // console.log(new Date().getDay())
+    // console.log(new Date().getHours())
+    // console.log(new Date().getMinutes())
 
     const { error, isLoaded } = this.state
     if (error) {
@@ -199,6 +203,7 @@ class App extends React.Component {
             handleAddTitle={this.handleAddTitle}
             acitvieAddNewTitle={this.acitvieAddNewTitle}
             handleRemoveTitle={this.handleRemoveTitle}
+            handleRemovePost={this.handleRemovePost}
             handleChange={this.handleChange}
             handleSignIn={this.handleSignIn}
             handleSignUp={this.handleSignUp}
