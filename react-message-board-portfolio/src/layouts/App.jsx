@@ -105,19 +105,34 @@ class App extends React.Component {
     const posts = data.posts
     const filteredPosts = posts.filter(post => post.id !== id)
     data.posts = [...filteredPosts]
-    console.log(id)
     this.setState({
       data
     })
     localStorage.setItem('data', JSON.stringify(data))
   }
 
+  handleEditPost = (id, value) => {
+    const data = JSON.parse(localStorage.getItem('data'))
+    const posts = data.posts
+    const postIndex = posts.findIndex(post => post.id === id)
+    data.posts[postIndex].body = value
+    this.setState({
+      data
+    })
+    localStorage.setItem('data', JSON.stringify(data))
+  }
+
+  getCurrentTime = () => {
+    const date = new Date()
+    const formatDate = `${date.getFullYear()}-${(date.getMonth() + 1)}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    return formatDate
+  }
+
   handleAddTitle = (e) => {
     e.preventDefault()
     const data = JSON.parse(localStorage.getItem('data'))
     const { loggedUserId } = this.state
-    const date = new Date()
-    const formatDate = `${date.getFullYear()}-10-10 10:52`
+    const date = this.getCurrentTime()
     if (this.state.title === '' || this.state.post === '') {
       alert('Enter title name and post description')
     } else {
@@ -127,7 +142,7 @@ class App extends React.Component {
         userId: loggedUserId,
         title: this.state.title,
         body: this.state.body,
-        date: formatDate
+        date
       }
       data.titles.push(newTitle)
       this.setState({
@@ -179,13 +194,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(new Date().getFullYear())
-    // console.log(new Date().getMonth())
-    // console.log(new Date().getDate())
-    // // console.log(new Date().getDay())
-    // console.log(new Date().getHours())
-    // console.log(new Date().getMinutes())
-
     const { error, isLoaded } = this.state
     if (error) {
       return <p>ERROR: Something's going wrong</p>
@@ -202,6 +210,7 @@ class App extends React.Component {
             state={this.state}
             handleAddTitle={this.handleAddTitle}
             acitvieAddNewTitle={this.acitvieAddNewTitle}
+            handleEditPost={this.handleEditPost}
             handleRemoveTitle={this.handleRemoveTitle}
             handleRemovePost={this.handleRemovePost}
             handleChange={this.handleChange}

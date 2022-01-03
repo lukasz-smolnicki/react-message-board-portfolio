@@ -12,11 +12,12 @@ const PostButtons = (props) => {
 }
 
 const EditPostButtons = (props) => {
-    const { toggleEdit, handleEditPost } = props
+    const { toggleEdit, value, handleEditPost, id } = props
     return (
         <>
             <Button action={toggleEdit} value={false} name='Cancel' />
-            <Button action={handleEditPost} value={false} name='Apply' />
+            <button onClick={() => { handleEditPost(id, value); toggleEdit(false) }}>Apply</button>
+            {/* <Button action={handleEditPost} value={id} name='Apply' /> */}
         </>
     )
 }

@@ -6,15 +6,26 @@ class Post extends React.Component {
         super(props)
         this.state = {
             isEdit: false,
+            posts: '',
         }
     }
+
     toggleEdit = (value) => {
         this.setState({
             isEdit: value
         })
     }
+
+    handleChange = (e) => {
+        const name = e.target.name
+        const value = e.target.value
+        this.setState({
+            [name]: value
+        })
+    }
+
     render() {
-        const { post, handleRemovePost } = this.props
+        const { post, handleRemovePost, handleEditPost } = this.props
         const { loggedUserId } = this.props.state
         const { users } = this.props.state.data
         const user = users.find(user => post.userId === user.id)
@@ -22,9 +33,9 @@ class Post extends React.Component {
             return (
                 <article>
                     <form>
-                        <input name='post' vaule={post.body} type='text' autoComplete='off' placeholder={post.body} onChange={() => true} />
+                        <input name='post' vaule={post.body} type='text' autoComplete='off' placeholder={post.body} onChange={this.handleChange} />
                     </form>
-                    {loggedUserId && loggedUserId === user.id ? <EditPostButtons toggleEdit={this.toggleEdit} /> : null}
+                    {loggedUserId && loggedUserId === user.id ? <EditPostButtons handleEditPost={handleEditPost} value={this.state.post} id={post.id} toggleEdit={this.toggleEdit} /> : null}
                 </article>
             )
         } else {
