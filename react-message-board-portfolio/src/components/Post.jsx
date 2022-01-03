@@ -51,26 +51,3 @@ class Post extends React.Component {
 }
 
 export default Post
-
-// class Post extends React.Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             isEdit: false
-//         }
-//     }
-//     toggleEdit = () => {
-//         this.setState({
-//             isEdit: !this.state.isEdit
-//         })
-//     }
-//     render() {
-//         const { post } = this.props
-
-//         return (
-
-//         )
-//     }
-// }
-
-// export default Post

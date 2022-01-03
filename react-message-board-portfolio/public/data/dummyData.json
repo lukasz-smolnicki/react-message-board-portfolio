@@ -8,13 +8,15 @@
             "id": 1,
             "name": "Wookie",
             "email": "test@test.pl",
-            "password": "1234"
+            "password": "1234",
+            "date": "2021-12-18 10:50"
         },
         {
             "id": 2,
             "name": "Monika",
             "email": "monika@monika.pl",
-            "password": "1234"
+            "password": "1234",
+            "date": "2021-12-18 10:50"
         }
     ],
     "titles": [{

@@ -8,8 +8,8 @@ const AddNewTitle = (props) => {
     return (
         <section>
             <form onSubmit={handleSubmit}>
-                <input name='title' vaule={title} type='text' autoComplete='off' placeholder='Title' onChange={handleChange} />
-                <input name='post' vaule={post} type='textarea' autoComplete='off' placeholder='Post' onChange={handleChange} />
+                <input name='name' vaule={title} type='text' autoComplete='off' placeholder='Title' onChange={handleChange} />
+                <input name='body' vaule={post} type='textarea' autoComplete='off' placeholder='Post' onChange={handleChange} />
                 <button>Add new title</button>
             </form>
             <Button action={acitvieAddNewTitle} value={false} name='Cancel' />

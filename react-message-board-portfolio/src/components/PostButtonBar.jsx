@@ -16,8 +16,10 @@ const EditPostButtons = (props) => {
     return (
         <>
             <Button action={toggleEdit} value={false} name='Cancel' />
-            <button onClick={() => { handleEditPost(id, value); toggleEdit(false) }}>Apply</button>
-            {/* <Button action={handleEditPost} value={id} name='Apply' /> */}
+            <button onClick={() => {
+                handleEditPost(id, value)
+                toggleEdit(false)
+            }}>Apply</button>
         </>
     )
 }

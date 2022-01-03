@@ -12,6 +12,7 @@ class App extends React.Component {
     name: '',
     password: '',
     email: '',
+    body: '',
     loggedUserId: false,
     newTitleIsActive: false,
     title: '',
@@ -66,7 +67,8 @@ class App extends React.Component {
         id: ++data.counter.userId,
         name: this.state.name,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        date: this.getCurrentTime()
       }
       data.users.push(newUser)
       this.setState({
@@ -124,7 +126,13 @@ class App extends React.Component {
 
   getCurrentTime = () => {
     const date = new Date()
-    const formatDate = `${date.getFullYear()}-${(date.getMonth() + 1)}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+    const second = date.getSeconds()
+    const formatDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day} ${hour < 10 ? '0' + hour : hour}:${minute < 10 ? '0' + minute : minute}:${second < 10 ? '0' + second : second}`
     return formatDate
   }
 
@@ -132,17 +140,16 @@ class App extends React.Component {
     e.preventDefault()
     const data = JSON.parse(localStorage.getItem('data'))
     const { loggedUserId } = this.state
-    const date = this.getCurrentTime()
-    if (this.state.title === '' || this.state.post === '') {
+    if (this.state.name === '' || this.state.body === '') {
       alert('Enter title name and post description')
     } else {
       ++data.counter.titleId
       const newTitle = {
         id: data.counter.titleId,
         userId: loggedUserId,
-        title: this.state.title,
+        name: this.state.name,
         body: this.state.body,
-        date
+        date: this.getCurrentTime()
       }
       data.titles.push(newTitle)
       this.setState({
@@ -163,7 +170,7 @@ class App extends React.Component {
     const userStorage = localStorage.getItem('loggedUserId')
     const dataStorage = localStorage.getItem('data')
     if (dataStorage === null) {
-      fetch('data/dummyData.json')
+      fetch('data/data.json')
         .then(res => res.json())
         .then(
           (result) => {
