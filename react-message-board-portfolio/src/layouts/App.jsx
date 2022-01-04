@@ -23,7 +23,10 @@ class App extends React.Component {
     this.setState({
       name: '',
       password: '',
-      email: ''
+      email: '',
+      body: '',
+      title: '',
+      post: ''
     })
   }
 
@@ -51,6 +54,7 @@ class App extends React.Component {
       })
       localStorage.setItem('loggedUserId', `${user.id}`)
     }
+    this.resetFormInputs()
   }
 
   handleSignUp = (e) => {
@@ -78,6 +82,7 @@ class App extends React.Component {
       localStorage.setItem('data', JSON.stringify(this.state.data))
       localStorage.setItem('loggedUserId', data.counter.userId)
     }
+    this.resetFormInputs()
   }
 
   handleChange = (e) => {
@@ -136,6 +141,30 @@ class App extends React.Component {
     return formatDate
   }
 
+  handleAddPost = (e, titleId) => {
+    e.preventDefault()
+    const data = JSON.parse(localStorage.getItem('data'))
+    const { loggedUserId } = this.state
+    if (this.state.post === '') {
+      alert('Enter post message')
+    } else {
+      ++data.counter.postId
+      const newPost = {
+        id: data.counter.postId,
+        userId: loggedUserId,
+        titleId: titleId,
+        body: this.state.post,
+        date: this.getCurrentTime()
+      }
+      data.posts.push(newPost)
+      this.setState({
+        data
+      })
+      localStorage.setItem('data', JSON.stringify(data))
+    }
+    this.resetFormInputs()
+  }
+
   handleAddTitle = (e) => {
     e.preventDefault()
     const data = JSON.parse(localStorage.getItem('data'))
@@ -158,6 +187,7 @@ class App extends React.Component {
       })
       localStorage.setItem('data', JSON.stringify(data))
     }
+    this.resetFormInputs()
   }
 
   acitvieAddNewTitle = (value) => {
@@ -216,6 +246,7 @@ class App extends React.Component {
           <Main
             state={this.state}
             handleAddTitle={this.handleAddTitle}
+            handleAddPost={this.handleAddPost}
             acitvieAddNewTitle={this.acitvieAddNewTitle}
             handleEditPost={this.handleEditPost}
             handleRemoveTitle={this.handleRemoveTitle}

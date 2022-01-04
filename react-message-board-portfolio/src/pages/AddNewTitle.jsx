@@ -9,7 +9,7 @@ const AddNewTitle = (props) => {
         <section>
             <form onSubmit={handleSubmit}>
                 <input name='name' vaule={title} type='text' autoComplete='off' placeholder='Title' onChange={handleChange} />
-                <input name='body' vaule={post} type='textarea' autoComplete='off' placeholder='Post' onChange={handleChange} />
+                <input name='body' vaule={post} type='textarea' autoComplete='off' placeholder='Post message' onChange={handleChange} />
                 <button>Add new title</button>
             </form>
             <Button action={acitvieAddNewTitle} value={false} name='Cancel' />

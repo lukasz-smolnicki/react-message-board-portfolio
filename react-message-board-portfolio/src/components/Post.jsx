@@ -39,7 +39,7 @@ class Post extends React.Component {
             return (
                 <article>
                     <form>
-                        <textarea name='post' value={this.state.post} type='text' autoComplete='off' placeholder={post.body} onChange={this.handleChange} />
+                        <input name='post' value={this.state.post} type='text' autoComplete='off' placeholder={post.body} onChange={this.handleChange} />
                     </form>
                     {loggedUserId && loggedUserId === user.id ? <EditPostButtons handleEditPost={handleEditPost} value={this.state.post} id={post.id} toggleEdit={this.toggleEdit} /> : null}
                 </article>
