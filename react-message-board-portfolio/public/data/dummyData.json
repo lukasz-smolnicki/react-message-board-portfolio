@@ -1,15 +1,15 @@
 {
     "counter": {
-        "userId": 2,
+        "userId": 3,
         "postId": 10,
         "titleId": 4
     },
     "users": [{
             "id": 1,
             "name": "Wookie",
-            "email": "test@test.pl",
-            "password": "1234",
-            "date": "2021-12-18 10:50"
+            "email": "wookie@wookie.pl",
+            "password": "12345",
+            "date": "2021-12-15 10:50"
         },
         {
             "id": 2,
@@ -17,6 +17,13 @@
             "email": "monika@monika.pl",
             "password": "1234",
             "date": "2021-12-18 10:50"
+        },
+        {
+            "id": 3,
+            "name": "Bartek",
+            "email": "bartek@bartek.pl",
+            "password": "123",
+            "date": "2021-12-20 10:50"
         }
     ],
     "titles": [{
@@ -47,14 +54,14 @@
     "posts": [{
             "id": 1,
             "userId": 1,
-            "titleId": 1,
+            "titleId": 2,
             "body": "test1",
             "date": "2021-12-18 10:50"
         },
         {
             "id": 2,
             "userId": 2,
-            "titleId": 1,
+            "titleId": 2,
             "body": "test2",
             "date": "2021-12-18 10:51"
         },
@@ -75,14 +82,14 @@
         {
             "id": 5,
             "userId": 1,
-            "titleId": 1,
+            "titleId": 3,
             "body": "test5",
             "date": "2021-12-18 11:00"
         },
         {
             "id": 6,
             "userId": 1,
-            "titleId": 1,
+            "titleId": 3,
             "body": "test6",
             "date": "2021-12-18 12:01"
         },
@@ -103,14 +110,14 @@
         {
             "id": 9,
             "userId": 1,
-            "titleId": 2,
+            "titleId": 4,
             "body": "test9",
             "date": "2021-12-18 14:15"
         },
         {
             "id": 10,
             "userId": 2,
-            "titleId": 2,
+            "titleId": 4,
             "body": "test10",
             "date": "2021-12-18 20:50"
         }

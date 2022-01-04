@@ -6,7 +6,7 @@ class Post extends React.Component {
         super(props)
         this.state = {
             isEdit: false,
-            posts: '',
+            post: '',
         }
     }
 
@@ -24,6 +24,12 @@ class Post extends React.Component {
         })
     }
 
+    componentDidMount() {
+        this.setState({
+            post: this.props.post.body
+        })
+    }
+
     render() {
         const { post, handleRemovePost, handleEditPost } = this.props
         const { loggedUserId } = this.props.state
@@ -33,7 +39,7 @@ class Post extends React.Component {
             return (
                 <article>
                     <form>
-                        <input name='post' vaule={post.body} type='text' autoComplete='off' placeholder={post.body} onChange={this.handleChange} />
+                        <textarea name='post' value={this.state.post} type='text' autoComplete='off' placeholder={post.body} onChange={this.handleChange} />
                     </form>
                     {loggedUserId && loggedUserId === user.id ? <EditPostButtons handleEditPost={handleEditPost} value={this.state.post} id={post.id} toggleEdit={this.toggleEdit} /> : null}
                 </article>

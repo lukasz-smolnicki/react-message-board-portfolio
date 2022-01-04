@@ -7,8 +7,8 @@ const SignIn = (props) => {
     return (
         <section>
             <form onSubmit={handleSignIn}>
-                <input name='name' vaule={name} type='text' autoComplete='off' placeholder='Name' onChange={handleChange} />
-                <input name='password' vaule={password} type='password' autoComplete='off' placeholder='Password' onChange={handleChange} />
+                <input name='name' value={name} type='text' autoComplete='off' placeholder='Name' onChange={handleChange} />
+                <input name='password' value={password} type='password' autoComplete='off' placeholder='Password' onChange={handleChange} />
                 <button>Sign In</button>
             </form>
         </section>

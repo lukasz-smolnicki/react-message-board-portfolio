@@ -170,7 +170,7 @@ class App extends React.Component {
     const userStorage = localStorage.getItem('loggedUserId')
     const dataStorage = localStorage.getItem('data')
     if (dataStorage === null) {
-      fetch('data/data.json')
+      fetch('data/dummyData.json')
         .then(res => res.json())
         .then(
           (result) => {

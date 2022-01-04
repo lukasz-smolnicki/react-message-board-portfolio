@@ -20,7 +20,6 @@ const Main = (props) => {
                     <Board
                         state={state}
                         handleRemoveTitle={handleRemoveTitle}
-
                         acitvieAddNewTitle={acitvieAddNewTitle}
                         handleChange={handleChange}
                         handleAddTitle={handleAddTitle} />}

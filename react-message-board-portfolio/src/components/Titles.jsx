@@ -8,7 +8,6 @@ const Titles = (props) => {
     const { loggedUserId } = props.state
     const { title } = props
     const user = users.find(user => title.userId === user.id)
-    console.log(title)
     return (
         <li>
             <NavLink to={`/title/${title.id}`}>{title.name}</NavLink>
