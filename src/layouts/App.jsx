@@ -3,6 +3,7 @@ import Header from './Header.jsx'
 import Nav from './Nav.jsx'
 import Main from './Main.jsx'
 import Footer from './Footer.jsx'
+import { Container, Row } from 'react-bootstrap'
 
 class App extends React.Component {
   state = {
@@ -238,25 +239,32 @@ class App extends React.Component {
       return <p>Loading...</p>
     } else {
       return (
-        <>
-          <Header />
-          <Nav
-            state={this.state}
-            handleSignOut={this.handleSignOut} />
-          <Main
-            state={this.state}
-            handleAddTitle={this.handleAddTitle}
-            handleAddPost={this.handleAddPost}
-            acitvieAddNewTitle={this.acitvieAddNewTitle}
-            handleEditPost={this.handleEditPost}
-            handleRemoveTitle={this.handleRemoveTitle}
-            handleRemovePost={this.handleRemovePost}
-            handleChange={this.handleChange}
-            handleSignIn={this.handleSignIn}
-            handleSignUp={this.handleSignUp}
-          />
-          <Footer />
-        </>
+        <Container>
+          <Row>
+            <Header />
+          </Row>
+          <Row>
+            <Nav
+              state={this.state}
+              handleSignOut={this.handleSignOut} /></Row>
+          <Row>
+            <Main
+              state={this.state}
+              handleAddTitle={this.handleAddTitle}
+              handleAddPost={this.handleAddPost}
+              acitvieAddNewTitle={this.acitvieAddNewTitle}
+              handleEditPost={this.handleEditPost}
+              handleRemoveTitle={this.handleRemoveTitle}
+              handleRemovePost={this.handleRemovePost}
+              handleChange={this.handleChange}
+              handleSignIn={this.handleSignIn}
+              handleSignUp={this.handleSignUp}
+            />
+          </Row>
+          <Row>
+            <Footer />
+          </Row>
+        </Container>
       )
     }
   }
