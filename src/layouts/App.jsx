@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header.jsx'
-import Nav from './Nav.jsx'
+import Navigation from './Navigation.jsx'
 import Main from './Main.jsx'
 import Footer from './Footer.jsx'
 import { Container, Row } from 'react-bootstrap'
@@ -241,12 +241,15 @@ class App extends React.Component {
       return (
         <Container>
           <Row>
-            <Header />
+            <Navigation
+              state={this.state}
+              handleSignOut={this.handleSignOut} />
           </Row>
           <Row>
-            <Nav
+            <Header
               state={this.state}
-              handleSignOut={this.handleSignOut} /></Row>
+              handleSignOut={this.handleSignOut} />
+          </Row>
           <Row>
             <Main
               state={this.state}

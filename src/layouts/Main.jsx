@@ -31,7 +31,7 @@ const Main = (props) => {
                     handleRemovePost={handleRemovePost}
                     handleEditPost={handleEditPost} />} />
                 <Route element={<ProtectedProfile state={state} />}>
-                    <Route path='profile/:id' element={<Profile />} />
+                    <Route path='profile/:name' element={<Profile />} />
                     <Route path='profile' element={<Profile />} />
                 </Route>
                 <Route element={<ProtectedLogin state={state} />}>
