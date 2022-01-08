@@ -37,6 +37,7 @@ class App extends React.Component {
       loggedUserId: false,
       newTitleIsActive: false,
     })
+    this.resetFormInputs()
   }
 
   handleSignIn = (e) => {

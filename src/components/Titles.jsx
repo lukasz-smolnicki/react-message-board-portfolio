@@ -7,6 +7,7 @@ class Titles extends React.Component {
         super(props)
         this.state = {
             isEdit: false,
+            toggleDeleteState: false,
             name: '',
             body: ''
         }
@@ -17,6 +18,12 @@ class Titles extends React.Component {
             isEdit: value,
             name: this.props.title.name,
             body: this.props.title.body
+        })
+    }
+
+    toggleDelete = (value) => {
+        this.setState({
+            toggleDeleteState: value,
         })
     }
 
@@ -80,7 +87,7 @@ class Titles extends React.Component {
                             {title.isEdited ? <span>Edited by: <Link className='link-dark text-decoration-none' to={`/profile/${user.name}`}>{user.name}</Link> in {title.editDate}</span> : <span>Created by: <Link className='link-dark text-decoration-none' to={`/profile/${user.name}`}>{user.name}</Link> in {title.date}</span>}
                         </div>
                         <div>
-                            {loggedUserId && loggedUserId === user.id ? <TitleButtons title={title} id={title.id} handleRemoveTitle={handleRemoveTitle} toggleEdit={this.toggleEdit} /> : null}
+                            {loggedUserId && loggedUserId === user.id ? <TitleButtons title={title} id={title.id} handleRemoveTitle={handleRemoveTitle} toggleDeleteState={this.state.toggleDeleteState} toggleDelete={this.toggleDelete} toggleEdit={this.toggleEdit} /> : null}
                         </div>
                     </div>
                 </div>
