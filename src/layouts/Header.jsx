@@ -1,10 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
 
 const Header = (props) => {
     const { loggedUserId } = props.state
-    const params = useParams()
 
     if (loggedUserId === false) {
         return (
@@ -17,7 +15,6 @@ const Header = (props) => {
     } else {
         const users = props.state.data.users
         const user = users.find(user => user.id === loggedUserId)
-        console.log(params)
         return (
             <>
                 <div className='jumbotron my-5'>

@@ -31,25 +31,33 @@
         "userId": 1,
         "name": "Test title 1",
         "body": "Test body",
-        "date": "2021-12-18 10:50"
+        "editDate": "",
+        "date": "2021-12-18 10:50",
+        "isEdited": false
     }, {
         "id": 2,
         "userId": 2,
         "name": "Test title 2",
         "body": "Test body 2",
-        "date": "2021-12-18 10:50"
+        "editDate": "",
+        "date": "2021-12-18 10:50",
+        "isEdited": false
     }, {
         "id": 3,
         "userId": 2,
         "name": "Test title 3",
         "body": "Test body 3",
-        "date": "2021-12-18 10:50"
+        "editDate": "",
+        "date": "2021-12-18 10:50",
+        "isEdited": false
     }, {
         "id": 4,
         "userId": 2,
         "name": "Test title 4",
         "body": "Test body 4",
-        "date": "2021-12-18 10:50"
+        "editDate": "",
+        "date": "2021-12-18 10:50",
+        "isEdited": false
     }],
     "posts": [{
             "id": 1,

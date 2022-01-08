@@ -12,13 +12,14 @@ import Profile from '../pages/Profile.jsx'
 import { ProtectedLogin, ProtectedProfile } from '../pages/ProtectetRoutes.jsx'
 
 const Main = (props) => {
-    const { state, handleAddPost, handleEditPost, handleAddTitle, handleSignUp, handleSignIn, handleChange, handleRemoveTitle, handleRemovePost, acitvieAddNewTitle } = props
+    const { state, handleAddPost, handleEditTitle, handleEditPost, handleAddTitle, handleSignUp, handleSignIn, handleChange, handleRemoveTitle, handleRemovePost, acitvieAddNewTitle } = props
     return (
         <main>
             <Routes>
                 <Route path='' element={
                     <Board
                         state={state}
+                        handleEditTitle={handleEditTitle}
                         handleRemoveTitle={handleRemoveTitle}
                         acitvieAddNewTitle={acitvieAddNewTitle}
                         handleChange={handleChange}

@@ -119,11 +119,25 @@ class App extends React.Component {
     localStorage.setItem('data', JSON.stringify(data))
   }
 
-  handleEditPost = (id, value) => {
+  handleEditPost = (id, body) => {
     const data = JSON.parse(localStorage.getItem('data'))
     const posts = data.posts
     const postIndex = posts.findIndex(post => post.id === id)
-    data.posts[postIndex].body = value
+    data.posts[postIndex].body = body
+    this.setState({
+      data
+    })
+    localStorage.setItem('data', JSON.stringify(data))
+  }
+
+  handleEditTitle = (id, name, body) => {
+    const data = JSON.parse(localStorage.getItem('data'))
+    const titles = data.titles
+    const titleIndex = titles.findIndex(title => title.id === id)
+    data.titles[titleIndex].name = name
+    data.titles[titleIndex].body = body
+    data.titles[titleIndex].isEdited = true
+    data.titles[titleIndex].editDate = this.getCurrentTime()
     this.setState({
       data
     })
@@ -257,6 +271,7 @@ class App extends React.Component {
               handleAddPost={this.handleAddPost}
               acitvieAddNewTitle={this.acitvieAddNewTitle}
               handleEditPost={this.handleEditPost}
+              handleEditTitle={this.handleEditTitle}
               handleRemoveTitle={this.handleRemoveTitle}
               handleRemovePost={this.handleRemovePost}
               handleChange={this.handleChange}
