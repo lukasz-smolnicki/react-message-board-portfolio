@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = (props) => {
     const { handleSignOut } = props
@@ -7,18 +9,18 @@ const Navigation = (props) => {
 
     if (loggedUserId === false) {
         return (
-            <ul className="nav nav-tabs">
-                <li className="nav-item">
-                    <NavLink className="nav-link" aria-current="page" to='/'>Board</NavLink>
+            <ul className='nav nav-tabs'>
+                <li className='nav-item'>
+                    <NavLink className='nav-link link-dark' aria-current='page' to='/'>Board</NavLink>
                 </li>
-                <li className="nav-item">
-                    <NavLink className="nav-link" to='/about'>About</NavLink>
+                <li className='nav-item'>
+                    <NavLink className='nav-link link-dark' to='/about'>About</NavLink>
                 </li>
-                <li className="nav-item">
-                    <NavLink className="nav-link" to='/signup'>SignUp</NavLink>
+                <li className='nav-item'>
+                    <NavLink className='nav-link link-dark' to='/signup'>SignUp</NavLink>
                 </li>
-                <li className="nav-item">
-                    <NavLink className="nav-link" to='/signin'>SignIn</NavLink>
+                <li className='nav-item'>
+                    <NavLink className='nav-link link-dark' to='/signin'>SignIn</NavLink>
                 </li>
             </ul>
         )
@@ -27,24 +29,20 @@ const Navigation = (props) => {
         const user = users.find(user => user.id === loggedUserId)
 
         return (
-            <ul className="nav nav-tabs">
-                <li className="nav-item">
-                    <NavLink className="nav-link" aria-current="page" to='/'>Board</NavLink>
+            <ul className='nav nav-tabs'>
+                <li className='nav-item'>
+                    <NavLink className='nav-link link-dark' aria-current='page' to='/'>Board</NavLink>
                 </li>
-                <li className="nav-item me-auto">
-                    <NavLink className="nav-link" to='/about'>About</NavLink>
+                <li className='nav-item me-auto'>
+                    <NavLink className='nav-link link-dark' to='/about'>About</NavLink>
                 </li>
-                <span className="navbar-text me-2">
-                    Signed in as: <NavLink to='/'>{user.name}</NavLink>
+                <li className='nav-item'>
+                    <NavLink className='nav-link link-dark' to={`/profile/${user.name}`}><FontAwesomeIcon icon={faUser} /> {user.name}</NavLink>
+                </li>
+                <button className='btn  link-dark' onClick={() => handleSignOut()}><span className='navbar-text'><FontAwesomeIcon icon={faSignOutAlt} /> SignOut
                 </span>
-                <button className="btn" onClick={() => handleSignOut()}>SignOut</button>
+                </button>
             </ul>
-            // <Navbar>
-            //     <NavLink to='/'>Board</NavLink>
-            //     <NavLink to='/profile'>Profile</NavLink>
-            //     <p>Witaj {user.name},</p>
-            //     <button onClick={() => handleSignOut()}>SignOut</button>
-            // </Navbar>
         )
     }
 }

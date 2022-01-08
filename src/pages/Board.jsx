@@ -10,9 +10,7 @@ const Board = (props) => {
     return (
         <section>
             {loggedUserId ? newTitleIsActive ? <AddNewTitle state={state} handleChange={handleChange} handleSubmit={handleAddTitle} acitvieAddNewTitle={acitvieAddNewTitle} /> : <Button action={acitvieAddNewTitle} value={true} name='Add new title' /> : null}
-            <ul>
-                {titles}
-            </ul>
+            {titles}
         </section>
     )
 }
