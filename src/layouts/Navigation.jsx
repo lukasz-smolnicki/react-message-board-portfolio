@@ -39,7 +39,7 @@ const Navigation = (props) => {
                 <li className='nav-item'>
                     <NavLink className='nav-link link-dark' to={`/profile/${user.name}`}><FontAwesomeIcon icon={faUser} /> {user.name}</NavLink>
                 </li>
-                <button className='btn  link-dark' onClick={() => handleSignOut()}><span className='navbar-text'><FontAwesomeIcon icon={faSignOutAlt} /> SignOut
+                <button className='btn link-dark' onClick={() => handleSignOut()}><span className='navbar-text'><FontAwesomeIcon icon={faSignOutAlt} /> SignOut
                 </span>
                 </button>
             </ul>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Titles from '../components/Titles.jsx'
-import Button from '../components/Button.jsx'
 import AddNewTitle from './AddNewTitle.jsx'
+import Nav from '../components/Nav.jsx'
 
 const Board = (props) => {
     const { handleChange, handleEditTitle, handleAddTitle, handleRemoveTitle, acitvieAddNewTitle, state } = props
@@ -9,9 +9,10 @@ const Board = (props) => {
     const titles = data.titles.map(title => <Titles key={title.id} handleEditTitle={handleEditTitle} handleRemoveTitle={handleRemoveTitle} title={title} state={props.state} />)
     return (
         <section>
-            {loggedUserId ? newTitleIsActive ? <AddNewTitle state={state} handleChange={handleChange} handleSubmit={handleAddTitle} acitvieAddNewTitle={acitvieAddNewTitle} /> : <Button action={acitvieAddNewTitle} value={true} name='Add new title' /> : null}
+            <Nav acitvieAddNewTitle={acitvieAddNewTitle} />
+            {loggedUserId && newTitleIsActive ? <AddNewTitle state={state} handleChange={handleChange} handleSubmit={handleAddTitle} acitvieAddNewTitle={acitvieAddNewTitle} /> : null}
             {titles}
-        </section>
+        </section >
     )
 }
 
