@@ -8,6 +8,7 @@ class Titles extends React.Component {
         this.state = {
             isEdit: false,
             toggleDeleteState: false,
+            searchIsActive: false,
             name: '',
             body: ''
         }
